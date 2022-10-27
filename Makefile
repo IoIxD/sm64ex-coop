@@ -343,14 +343,6 @@ else
   endif
 endif
 
-ifeq ($(HEADLESS),1)
-  $(info Compiling headless)
-  RENDER_API := DUMMY
-  WINDOW_API := DUMMY
-  AUDIO_API := DUMMY
-  CONTROLLER_API :=
-endif
-
 # NON_MATCHING - whether to build a matching, identical copy of the ROM
 #   1 - enable some alternate, more portable code that does not produce a matching ROM
 #   0 - build a matching ROM
@@ -758,6 +750,15 @@ ifeq ($(TARGET_N64),1)
   INCLUDE_DIRS += include/libc
 else
   INCLUDE_DIRS += sound lib/lua/include $(EXTRA_INCLUDES)
+endif
+
+ifeq ($(HEADLESS),1)
+  $(info Compiling headless)
+  RENDER_API := DUMMY
+  WINDOW_API := DUMMY
+  AUDIO_API := DUMMY
+  CONTROLLER_API :=
+  #
 endif
 
 # Connfigure backend flags

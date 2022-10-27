@@ -1,3 +1,5 @@
+#ifdef AAPI_DUMMY
+
 #include "audio_api.h"
 #include "macros.h"
 
@@ -26,3 +28,5 @@ struct AudioAPI audio_null = {
     audio_null_play,
     audio_null_shutdown
 };
+
+#endif
